@@ -1,0 +1,20 @@
+{% extends 'mainBundle::layout.html.twig'%}
+
+{% block body %}
+Liste des salles :
+
+<table class="table table=bordered">
+<th>Nom</th>
+<th>Description</th>
+<th>Capacité</th>
+
+{%for salle in mes_salles %}
+<tr> 
+	<td> {{ salle.nom}} </td> 
+
+
+</tr>
+{% endfor %}
+</table>
+
+{% endblock%}

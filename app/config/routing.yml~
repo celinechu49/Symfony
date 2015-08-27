@@ -1,0 +1,10 @@
+main:
+    #resource: "@mainBundle/Resources/config/routing.yml"
+    resource: "@mainBundle/controller"
+    type: annotation
+    prefix:   /
+
+imiehello:
+    resource: "@imiehelloBundle/Resources/config/routing.yml"
+    prefix:   /
+

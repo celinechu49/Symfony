@@ -1,0 +1,22 @@
+<?php
+
+namespace imie\helloBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
+class DefaultController extends Controller
+{
+    public function indexAction($name)
+    {
+        return $this->render('imiehelloBundle:Default:index.html.twig', array('name' => $name));
+    }
+    public function helloAction()
+    {
+    //$content=$this->get('templating')->render('imiehelloBundle:hello:index.html.twig');
+    //return new Response($content);
+    //return new Response ('hello world')
+    $name= 'Celine';
+    return $this->render('imiehelloBundle:hello:index.html.twig',array('name' => $name));
+    }
+}

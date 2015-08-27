@@ -1,0 +1,7 @@
+imiehello_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: imiehelloBundle:Default:index }
+
+imiehello_accueil:
+    path: /
+    defaults: { _controller: imiehelloBundle:Default:Action }

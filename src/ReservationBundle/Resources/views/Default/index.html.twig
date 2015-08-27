@@ -1,0 +1,16 @@
+{%extends 'mainBundle::layout.html.twig'%}
+
+{%block body%}
+
+<h1>Voici les salles :</h1>
+
+<h2> {{ ma_salle.nom }} </h2>
+
+Voici les réservations : <br>
+
+
+La {{ ma_resa.nom }} concerne la {{ ma_resa.salle.nom}}
+<br>
+La {{ ma_resa2.nom }} concerne la {{ ma_resa2.salle.nom}}
+
+{% endblock %}

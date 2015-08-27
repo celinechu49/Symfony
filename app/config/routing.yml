@@ -1,0 +1,15 @@
+reservation:
+    resource: "@ReservationBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+main:
+    #resource: "@mainBundle/Resources/config/routing.yml"
+    resource: "@mainBundle/Controller"
+    type: annotation
+    prefix:   /
+
+imiehello:
+    resource: "@imiehelloBundle/Resources/config/routing.yml"
+    prefix:   /
+

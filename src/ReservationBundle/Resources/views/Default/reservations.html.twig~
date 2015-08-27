@@ -1,0 +1,22 @@
+{% extends 'mainBundle::layout.html.twig'%}
+
+{% block body %}
+Liste des Réservations :
+
+<table class="table table=bordered">
+<th>Nom</th>
+<th>Mail</th>
+<th>Date Réservation</th>
+
+
+{%for resas in mes_resas %}
+<tr> 
+	<td>{{ resas.nom}}</td>
+</tr>
+	
+{% endfor %}
+
+</table>
+
+{% endblock%}
+

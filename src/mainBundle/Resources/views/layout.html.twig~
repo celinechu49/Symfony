@@ -1,0 +1,23 @@
+<html lang='en'>
+	<head>
+	<meta charset="UTF-8">
+	<title> {%block title%} Bienvenue {% endblock %} </title>
+	
+	{% block stylesheets%}
+	<link href="{{ asset ('bundles/main/css/bootstrap.css') }}" rel="stylesheet"/>
+	<link href="{{ asset ('bundles/main/css/style.css') }}" rel="stylesheet"/>
+	{% endblock %}
+	
+	</head>
+	<body>
+	{{include('mainBundle::menu.html.twig') }}
+	{% block javascript %}
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="{{ asset('bundles/main/js/bootstrap.js')}}"></script>
+	{% endblock %}
+	
+	{%block body%}
+		paragraphe
+	{% endblock %}
+	</body>
+</html>

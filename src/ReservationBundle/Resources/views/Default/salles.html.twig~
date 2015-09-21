@@ -7,7 +7,6 @@ Liste des salles :
 <th>Nom</th>
 <th>Description</th>
 <th>Capacité</th>
-<th>Voir</th>
 
 {%for salle in mes_salles %}
 <tr> 

@@ -1,0 +1,47 @@
+{%extends 'mainBundle::layout.html.twig'%}
+
+{% block body -%}
+    <h1>Liste des réservations</h1>
+    
+     <ul> 
+       <a href="{{ path('reservation_new') }}" class='btn'>
+                Ajouter une réservation
+       </a>
+    </ul>
+
+    <table class="table table=bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Mail</th>
+                <th>Date debut</th>
+                <th>Date fin</th>
+                <th>  </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('reservation_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.mail }}</td>
+                <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('j/m/Y H:i') }}{% endif %}</td>
+                <td>{% if entity.dateFin %}{{ entity.dateFin|date('j/m/Y H:i') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('reservation_show', { 'id': entity.id }) }}">Voir</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('reservation_edit', { 'id': entity.id }) }}">Modifier</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}

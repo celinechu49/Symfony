@@ -61,6 +61,10 @@ class Salle
 	
 	$this->reservations = new ArrayCollection();
 	}
+	
+	public function __toString(){
+	return $this->nom;	
+	}
 
     /**
      * Get id

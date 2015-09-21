@@ -4,26 +4,31 @@
 	<title> {%block title%} Bienvenue {% endblock %} </title>
 	
 	{% block stylesheets%}
-	<link href="{{ asset ('bundles/main/css/bootstrap.css') }}" rel="stylesheet"/>
-	<link href="{{ asset ('bundles/main/css/style.css') }}" rel="stylesheet"/>
+		<link href="{{ asset ('bundles/main/css/bootstrap.css') }}" rel="stylesheet"/>
+		<link href="{{ asset ('bundles/main/css/style.css') }}" rel="stylesheet"/>
+		<link href="{{ asset ('bundles/main/css/jquery.datetimepicker.css') }}" rel="stylesheet"/>
 	{% endblock %}
 	
+		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="{{ asset('bundles/main/js/bootstrap.js')}}"></script>
+	
+
+{% block javascript %}
+
+{% endblock %}
+	
 	</head>
+	
 	<body>
 	<div class="container">
 
+	
 	{%include 'mainBundle::menu.html.twig' with {"current": block('menu')} %}
 	
-	{% block javascript %}
-	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-	<script src="{{ asset('bundles/main/js/bootstrap.js')}}"></script>
-	{% endblock %}
-	
 	{%block body%}
-		paragraphe
+	
 	{% endblock %}
 	
 	</div>
-	
 	</body>
 </html>

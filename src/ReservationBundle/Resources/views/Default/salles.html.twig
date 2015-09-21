@@ -11,8 +11,9 @@ Liste des salles :
 {%for salle in mes_salles %}
 <tr> 
 	<td> {{ salle.nom}} </td> 
-
-
+	<td> {{ salle.description}} </td> 
+	<td> {{ salle.capacite}} </td> 
+	
 </tr>
 {% endfor %}
 </table>

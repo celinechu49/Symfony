@@ -6,12 +6,16 @@ Liste des Réservations :
 <table class="table table=bordered">
 <th>Nom</th>
 <th>Mail</th>
-<th>Date</th>
+<th>date Debut</th>
+<th>Date Fin</th>
 
 
 {%for resas in mes_resas %}
 <tr> 
-	<td>{{ resas.nom}}</td>
+	<td>{{ resas.nom }}</td>
+	<td>{{ resas.mail}}</td>
+	<td>{{ resas.dateDebut | date('j,M,Y H:i')}}</td>
+	<td>{{ resas.dateFin | date('j,M,Y H:i')}}</td>
 </tr>
 	
 {% endfor %}

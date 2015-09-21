@@ -1,0 +1,16 @@
+{%extends 'mainBundle::layout.html.twig'%}
+
+{% block body -%}
+    <h1>Modifier une réservation</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reservation') }}">
+            Retour à la liste
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -1,0 +1,32 @@
+{%extends 'mainBundle::layout.html.twig'%}
+
+	
+{% block javascript %}
+	
+	<script src="{{ asset('bundles/main/js/jquery.datetimepicker.js')}}"></script>
+	
+	<script> 
+	$(function(){
+	
+	$("#reservationbundle_reservation_dateDebut") .datetimepicker();
+	$("#reservationbundle_reservation_dateFin") .datetimepicker();
+	});
+	
+	</script>
+	
+	{% endblock %}
+	
+
+{% block body -%}
+    <h1>Faire une Réservation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reservation') }}" class='btn'>
+            Retour à la liste
+        </a>
+    </li>
+</ul>
+{% endblock %}

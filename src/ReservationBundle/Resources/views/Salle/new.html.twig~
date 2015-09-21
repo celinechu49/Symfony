@@ -1,0 +1,15 @@
+{%extends 'mainBundle::layout.html.twig'%}
+
+{% block body -%}
+    <h1>Création d'une salle</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('salle') }}" class='btn'>
+            Retour à la liste
+        </a>
+    </li>
+</ul>
+{% endblock %}

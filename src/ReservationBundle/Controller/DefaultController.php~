@@ -6,12 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use ReservationBundle\Entity\Salle;
+use ReservationBundle\Form\SalleType;
 use ReservationBundle\Entity\Reservation;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/Home", name="reservationbundle_index")
+     * @Route("/", name="reservationbundle_index")
      * @Template()
      */
     public function indexAction()
@@ -41,6 +44,7 @@ class DefaultController extends Controller
     	
     	$em->flush();
     	*/
+    	
         return array('ma_salle' => $salle,
         'ma_resa' => $resa,
         'ma_resa2' => $resa2);
@@ -49,7 +53,7 @@ class DefaultController extends Controller
     
     /**
     *
-    * @Route("/salles", name="reservationbundle_salle")
+    * @Route("/salles", name="reservationbundle_salles")
     * @Template()
     */
     
@@ -84,4 +88,54 @@ class DefaultController extends Controller
     	
     }
     
+            /**
+    *
+    * @Route("/reserver", name="reservationbundle_reserver")
+    * @Template()
+    */
+    
+    public function reserverAction(Request $request)
+    { 
+    	$em = $this->getDoctrine()->getManager();
+		$reserver = new reservation ();
+		$formBuilder=$this->get('form.factory')->CreateBuilder('form',$reserver);
+		$formBuilder
+			->add('Nom','text')
+			->add('Mail','text')
+			->add('dateDebut','datetime', array('widget' => 'single_text'))
+			->add('dateFin', 'datetime',  array('widget' => 'single_text'))
+    		->add('save','submit', array('label'=>'Sauvegarder'));
+    		//->add('saveAndAdd','submit',array('label'=>'Sauvegarder et suivant'));
+    	$form=$formBuilder->getForm();
+    	$form-> handleRequest($request);
+    	if($form->isValid())
+    		{
+				$em=$this->getDoctrine()->getManager();
+				$em->persist($reserver);
+				$em->flush();
+				
+			//	if($form->get('saveAndAdd')->isClicked())
+				
+				return $this->redirect($this->generateUrl('reservationbundle_index'));
+					
+    		}
+    	
+    	return array(
+    	'formulaire_reservation'=> $form->CreateView());
+    	
+    }
+    /**
+    *
+    * @Route("/ajouterSalle", name="reservationbundle_ajouter")
+    * @Template()
+    */
+    
+    public function ajouterAction()
+    {
+    	$salle = new Salle();
+    	$form=$this->createForm ( new SalleType(), $salle, array());
+    	return array(
+    	'formulaire_ajout'=> $form->CreateView()
+    	);
+    }
 }

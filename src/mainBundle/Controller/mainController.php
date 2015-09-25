@@ -17,8 +17,12 @@ class mainController extends Controller
 	*/
     public function indexAction()
     { $name= "Celine";
+    
+    $serviceSaintDuJour = $this->get('main.getMySaint');
+    $saint = $serviceSaintDuJour->getSaintOfTheDay();
+    
       //  return $this->render('mainBundle:Main:index.html.twig');
         
-       return array('nom' => $name);
+       return array('nom' => $name, 'saint' => $saint);
     }
 }

@@ -4,6 +4,12 @@
     <h1>Modification d'une salle</h1>
 
     {{ form(edit_form) }}
+    
+	{% if entity.img is not null %}               
+                <img src='{{entity.img.getWebPath  | imagine_filter('my_thumb')}}'/>
+               {% else %}
+               
+               {% endif %} 
 
         <ul class="record_actions">
     <li>
@@ -14,3 +20,5 @@
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
+
+{% block menu %}Salle{% endblock %}

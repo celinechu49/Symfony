@@ -3,13 +3,54 @@
 {% block body -%}
     <h1>Création d'une salle</h1>
 
-    {{ form(form) }}
+   
+   {{ form_start(form, {attr: {'id': 'formCreateSalle'}}) }}
+   {{ form_row(form.nom) }}
+   {{ form_row(form.description) }}
+   {{ form_label(form.capacite) }}
+   {{ form_widget(form.capacite) }}
+   {{ form_row(form.img) }}
+   
+   {{ form_end(form)}}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('salle') }}" class='btn'>
+
+        <a href="{{ path('salle') }}">
             Retour à la liste
         </a>
-    </li>
+
 </ul>
 {% endblock %}
+
+{% block js_footer %}
+<script>
+/*
+$(function(){
+ 		var formCreateSalle = $('form#formCreateSalle');
+ 		var formUrl = formCreateSalle.attr('action');
+ 
+ 		formCreateSalle.on('submit',function()
+ 					{
+ 					$.ajax ({
+ 						url: formUrl,
+ 						type: "POST",
+ 						data:formCreateSalle.serialize(),
+ 						success: function(data)
+ 								{
+ 								$('h1').html(data.welldone);
+ 								}
+ 						});
+ 					return false;
+ 			
+					});
+}); 
+*/
+</script>
+{% endblock js_footer %}
+
+{% block title %}
+Page Salle
+{% endblock title%}
+
+				
+

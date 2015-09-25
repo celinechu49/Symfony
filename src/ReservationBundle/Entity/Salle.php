@@ -52,7 +52,7 @@ class Salle
 	
 		/**
 		*
-		* @ORM\OneToOne(targetEntity="ReservationBundle\Entity\Image")
+		* @ORM\OneToOne(targetEntity="ReservationBundle\Entity\Image", cascade={"persist"})
 		*
 		*/
 	private $img;

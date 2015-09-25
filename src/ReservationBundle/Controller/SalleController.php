@@ -3,12 +3,14 @@
 namespace ReservationBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use ReservationBundle\Entity\Salle;
 use ReservationBundle\Form\SalleType;
+
 
 /**
  * Salle controller.
@@ -50,8 +52,16 @@ class SalleController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $entity->getImg()->upload();
+            
             $em->persist($entity);
             $em->flush();
+            
+          //  $returnArray = array("respondeCode"=> 200, "welldone" => "La salle a bien été ajoutée!");
+          //  $return = json_encode($returnArray);
+            
+          //  return new Response($return, 200, array("Content-type" => "application/json"));
 
             return $this->redirect($this->generateUrl('salle_show', array('id' => $entity->getId())));
         }
@@ -191,9 +201,11 @@ class SalleController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+        	
+        	   $entity->getImg()->upload();
             $em->flush();
 
-            return $this->redirect($this->generateUrl('salle_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('salle_show', array('id' => $id)));
         }
 
         return array(

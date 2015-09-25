@@ -4,9 +4,39 @@
 
 <h1>Bienvenue</h1>
 
-<h2> Vous pouvez, ici, réserver des salles pour vos réunions 
-en cliquant sur les différents onglets </h2>
+<script>
+$(document).ready(function() {
+	var options = 
+	{
+				header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month, agendaWeek, agendaDay'
+							},
+	events:
+		[
+			{% for event in events %}
+				{
+					title:'{{ event.Salle.nom}}',
+					start: '{{ event.dateDebut | date('Y-m-d\\TH:i:s') }}' ,
+					end:'{{ event.dateFin | date('Y-m-d\\TH:i:s') }}' ,	
+					backgroundColor: 'black'
+				},
+			{% endfor %}
+		],
+	
+	timeFormat: 'H:mm'
+	
+	};
+	
+    $('#calendar').fullCalendar(options)
 
+});
 
+</script>
+
+<div id='calendar'> </div>
 
 {% endblock %}
+
+{% block menu %}index{% endblock %}

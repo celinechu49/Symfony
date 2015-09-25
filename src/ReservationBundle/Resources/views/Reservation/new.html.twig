@@ -20,13 +20,56 @@
 {% block body -%}
     <h1>Faire une Réservation</h1>
 
-    {{ form(form) }}
+ {{ form_start(form, {attr: {'id': 'formCreateReservation'}}) }}
+   {{ form_row(form.salle) }}
+   {{ form_row(form.nom) }}
+   {{ form_label(form.mail) }}
+   {{ form_widget(form.mail) }}
+   {{ form_row(form.dateDebut) }}
+   {{ form_row(form.dateFin) }}
+   
+   {{ form_end(form)}}
 
         <ul class="record_actions">
 
-        <a href="{{ path('reservation') }}" class='btn'>
+        <a href="{{ path('reservation') }}">
             Retour à la liste
         </a>
 
 </ul>
 {% endblock %}
+
+
+{% block js_footer %}
+<script>
+$(function(){
+ 		var formCreateReservation = $('form#formCreateReservation');
+ 		var formUrl = formCreateReservation.attr('action');
+ 
+ 		formCreateReservation.on('submit',function()
+ 					{
+ 					$.ajax ({
+ 						url: formUrl,
+ 						type: "POST",
+ 						data:formCreateReservation.serialize(),
+ 						success: function(data)
+ 								{
+ 								$('h1').html(data.welldone);
+ 								}
+ 						});
+ 					return false;
+ 			
+					});
+});
+</script>
+{% endblock js_footer %}
+
+
+
+{% block title %}
+Page Réservation
+{% endblock title %}
+
+
+{% block menu %}Reserver{% endblock %}
+

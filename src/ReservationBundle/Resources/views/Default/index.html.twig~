@@ -4,13 +4,37 @@
 
 <h1>Bienvenue</h1>
 
-<h2> Vous pouvez, ici, réserver des salles pour vos réunions  </h2>
+<script>
 
-Voici les réservations : <br>
+$(document).ready(function() {
+	var options = {
+				header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month, agendaWeek, agendaDay'
+							},
+events:
+	[
+	{% for event in events %}
+	{
+	title:'{{ event.Salle.nom}}',
+	start: '{{ event.dateDebut | date('Y-m-d\\TH:i:s') }}' ,
+	end:'{{ event.dateFin | date('Y-m-d\\TH:i:s') }}' ,	
+	backgroundColor: 'black'
+	},
+	{% endfor %}
+	],
+	
+	timeFormat: 'H:mm'
+	};
+    $('#calendar').fullCalendar(options)
 
+});
 
-La {{ ma_resa.nom }} concerne la {{ ma_resa.salle.nom}}
-<br>
-La {{ ma_resa2.nom }} concerne la {{ ma_resa2.salle.nom}}
+</script>
+
+<div id='calendar'> </div>
 
 {% endblock %}
+
+{% block menu %}index{% endblock %}

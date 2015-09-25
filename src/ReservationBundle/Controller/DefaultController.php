@@ -21,33 +21,11 @@ class DefaultController extends Controller
     {
     	$em = $this->getDoctrine()->getManager();
     	
-    	$salle = new Salle();
-    	$salle -> setNom('Salle 1');
+      $repoReservations=$em->getRepository('ReservationBundle:Reservation');
     	
-    	$salle2 = new Salle();
-    	$salle2 -> setNom('Salle 2');
-    	
-    	$resa = new Reservation();
-    	$resa -> setNom('Reservation 1');
-    	
-    	$resa2 = new Reservation();
-    	$resa2 -> setNom('Réservation 2');
-    	
-    	$resa -> setSalle($salle);
-    	
-    	$resa2-> setSalle($salle2);
-    	
-    	/*$em->persist($salle);
-    	$em->persist($resa);
-    	$em->persist($salle2);
-    	$em->persist($resa2);
-    	
-    	$em->flush();
-    	*/
-    	
-        return array('ma_salle' => $salle,
-        'ma_resa' => $resa,
-        'ma_resa2' => $resa2);
+    	$resa = $repoReservations->findAll();
+   
+        return array('events'=> $resa);
        
     }
     

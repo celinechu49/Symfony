@@ -1,0 +1,9 @@
+ReservationBundle\Entity\Reservation:
+    properties:
+        nom:
+            - NotBlank: {message: La valeur du champs Nom ne doit pas être vide.}
+        mail:
+            - NotBlank: {message: Merci de nous laisser votre email afin de pouvoir vous recontacter}
+            - Email:
+                message: "'{{ value }}' n'est pas un email valide."
+                checkMX: true

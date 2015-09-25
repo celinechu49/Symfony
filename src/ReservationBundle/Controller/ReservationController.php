@@ -3,6 +3,7 @@
 namespace ReservationBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -51,11 +52,37 @@ class ReservationController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+          //  $salle = $entity->getSalle();
+          
+        //  $salle=$reservation->getSalle();
+        //  $dateD=$reservation->getDateDebut();
+        //  $dateF=$reservation->getDateFin ();
+          
+        //  $resas=$salle->getReservations();
+       //   $ok=$resas->count() > 0 ? false : true ;
+          
+       //   foreach($resas as $resa){
+		//			if($dateD < $resa->getDateDebut() && $dateF < $resa->getDateDebut()){
+			//		$ok = true;}          
+          
+       //   		if($dateD > $resa->getDateFin() && $dateF > $resa->getDateFin()){
+			//		$ok = true;}          
+          
+          
+        //  if ($ok == true && $dateD < $dateF){
+            
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('reservation_show', array('id' => $entity->getId())));
+
+ 				$returnArray = array("respondeCode"=> 200, "welldone" => "La Réservation a bien été créée!");
+            $return = json_encode($returnArray);
+            
+            return new Response($return, 200, array("Content-type" => "application/json"));
+
+         //   return $this->redirect($this->generateUrl('reservation_show', array('id' => $entity->getId())));
         }
+        
 
         return array(
             'entity' => $entity,

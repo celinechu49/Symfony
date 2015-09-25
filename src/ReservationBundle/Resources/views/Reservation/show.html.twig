@@ -10,6 +10,10 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
+            	<th>Salle</th>
+            	<td>{{ entity.salle}}
+            </tr>
+            <tr>
                 <th>Nom</th>
                 <td>{{ entity.nom }}</td>
             </tr>
@@ -42,3 +46,6 @@
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
+
+
+{% block menu %}Reservations{% endblock %}

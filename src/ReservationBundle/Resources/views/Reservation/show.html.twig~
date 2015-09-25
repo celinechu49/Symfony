@@ -10,6 +10,10 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
+            	<th>Salle</th>
+            	<td>{{ entity.salle}}
+            </tr>
+            <tr>
                 <th>Nom</th>
                 <td>{{ entity.nom }}</td>
             </tr>
@@ -35,10 +39,13 @@
         </a>
     </li>
     <li>
-        <a href="{{ path('reservation_edit', { 'id': entity.id }) }}" class='btn'>
+        <a href="{{ path('reservation_edit', { 'id': entity.id }) }}" >
             Modifier
         </a>
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
+
+
+{% block menu %}Réservation{% endblock %}

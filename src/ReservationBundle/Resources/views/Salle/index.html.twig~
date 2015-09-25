@@ -16,6 +16,7 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Capacite</th>
+                <th>Image</th>
                 <th> </th>
             </tr>
         </thead>
@@ -23,9 +24,14 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('salle_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nom }} <br></td>
+                <td>{{ entity.nom }}</td>
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.capacite }}</td>
+					{% if entity.img is not null %}               
+                <td><img src='{{entity.img.getWebPath  | imagine_filter('my_thumb')}}'/></td>
+               {% else %}
+               
+               {% endif %} 
                 <td>
                 <ul>
                     <li>
@@ -34,6 +40,7 @@
                     <li>
                         <a href="{{ path('salle_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
+                    <li>{{ form(delete_form) }}</li>
                 </ul>
                 </td>
             </tr>
@@ -43,3 +50,5 @@
 
 
     {% endblock %}
+    
+    {% block menu %}Salle{% endblock %}

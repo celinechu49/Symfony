@@ -7,10 +7,14 @@
 		<link href="{{ asset ('bundles/main/css/bootstrap.css') }}" rel="stylesheet"/>
 		<link href="{{ asset ('bundles/main/css/style.css') }}" rel="stylesheet"/>
 		<link href="{{ asset ('bundles/main/css/jquery.datetimepicker.css') }}" rel="stylesheet"/>
+		<link href="{{ asset ('bundles/main/css/fullcalendar.css') }}" rel="stylesheet"/>
 	{% endblock %}
 	
 		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="{{ asset('bundles/main/js/bootstrap.js')}}"></script>
+		<script src="{{ asset('bundles/main/js/moment.min.js')}}"></script>
+		<script src="{{ asset('bundles/main/js/fullcalendar.js')}}"></script>
+		<script src="{{ asset('bundles/main/lang/fr.js')}}"></script>
 	
 
 {% block javascript %}
@@ -28,7 +32,12 @@
 	{%block body%}
 	
 	{% endblock %}
+
 	
 	</div>
+	{%block js_footer%}
+	
+	{% endblock %}
+	
 	</body>
 </html>

@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class SalleType extends AbstractType
 {
     /**
@@ -18,7 +19,7 @@ class SalleType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('capacite')
-            ->add('img')
+            ->add('img', new ImageType())
         ;
     }
     

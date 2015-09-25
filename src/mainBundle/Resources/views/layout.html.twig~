@@ -11,6 +11,9 @@
 	
 		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script src="{{ asset('bundles/main/js/bootstrap.js')}}"></script>
+		<script src="{{ asset('bundles/main/js/moment.min.js')}}"></script>
+		<script src="{{ asset('bundles/main/js/fullcalendar.js')}}"></script>
+		<script src="{{ asset('bundles/main/lang/fr.js')}}"></script>
 	
 
 {% block javascript %}
@@ -23,14 +26,17 @@
 	<div class="container">
 
 	
-
+	{%include 'mainBundle::menu.html.twig' with {"current": block('menu')} %}
 	
 	{%block body%}
 	
-	{%include 'mainBundle::menu.html.twig' with {"current": block('menu')} %}
-
 	{% endblock %}
+
 	
 	</div>
+	{%block js_footer%}
+	
+	{% endblock %}
+	
 	</body>
 </html>

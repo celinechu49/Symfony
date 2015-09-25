@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Salle</th>
                 <th>Nom</th>
                 <th>Mail</th>
                 <th>Date debut</th>
@@ -24,6 +25,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('reservation_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+					<td>{{entity.salle }}</td>                
                 <td>{{ entity.nom }}</td>
                 <td>{{ entity.mail }}</td>
                 <td>{% if entity.dateDebut %}{{ entity.dateDebut|date('j/m/Y H:i') }}{% endif %}</td>
@@ -45,3 +47,5 @@
 
 
     {% endblock %}
+    
+    {% block menu %}Reservations{% endblock %}

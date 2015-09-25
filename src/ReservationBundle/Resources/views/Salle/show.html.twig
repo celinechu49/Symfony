@@ -21,6 +21,14 @@
                 <th>Capacite</th>
                 <td>{{ entity.capacite }}</td>
             </tr>
+            <tr>
+            	<th>Image</th>
+            		{% if entity.img is not null %}               
+              <td><img src='{{entity.img.getWebPath  | imagine_filter('my_thumb')}}'/></td>
+               {% else %}
+               
+               {% endif %} 
+            </tr>
         </tbody>
     </table>
 
@@ -38,3 +46,5 @@
     <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
+
+{% block menu %}Salle{% endblock %}

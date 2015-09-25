@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new mainBundle\mainBundle(),
             new ReservationBundle\ReservationBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
-           // new FOS\UserBundle\FOSUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

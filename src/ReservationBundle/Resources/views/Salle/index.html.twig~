@@ -12,7 +12,7 @@
     <table class="table table=bordered">
         <thead>
             <tr>
-                <th>Id</th>
+              <!--  <th>Id</th> -->
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Capacite</th>
@@ -40,7 +40,9 @@
                     <li>
                         <a href="{{ path('salle_edit', { 'id': entity.id }) }}">Modifier</a>
                     </li>
-                    <li>{{ form(delete_form) }}</li>
+                    <li>
+                        <a href="{{ path('salle_delete', { 'id': entity.id }) }}">Supprimer</a>
+                    </li>
                 </ul>
                 </td>
             </tr>

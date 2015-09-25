@@ -11,8 +11,9 @@ $(document).ready(function() {
 				header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month, agendaWeek, agendaDay'
+				right: 'agendaDay, agendaWeek, month'
 							},
+	defaultView: 'agendaWeek',
 	events:
 		[
 			{% for event in events %}

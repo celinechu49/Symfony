@@ -67,7 +67,7 @@ class ReservationController extends Controller
           
        //   		if($dateD > $resa->getDateFin() && $dateF > $resa->getDateFin()){
 			//		$ok = true;}          
-          }
+          
           
         //  if ($ok == true && $dateD < $dateF){
             
